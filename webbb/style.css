@@ -1,13 +1,19 @@
-/* --- Design System & Variables --- */
 :root {
-    /* Colors */
-    --background-dark: black;
-    --primary-blue: #007BFF;
-    --card-bg: rgb(26, 25, 29);
+    /* Colors - NEW Shiny Lavender & Green Theme */
+    --background-dark: #110F14;
+    --primary-lavender: #B695FF;
+    --secondary-green: #4284a8;
+    --card-bg: rgb(22, 20, 26);
     --text-light: #f0f0f0;
     --text-secondary: #a0a0b8;
-    --border-color: rgba(255, 255, 255, 0.1);
-    --glow-color: rgba(139, 24, 197, 0.726);
+    --border-color: rgba(182, 149, 255, 0.2);
+    --glow-color: rgba(182, 149, 255, 0.7);
+    --vibrant-magenta: var(--secondary-green);
+
+    /* Metal Gradients (Unchanged) */
+    --metal-gradient-silver: linear-gradient(160deg, #e4e8f0 0%, #c4c8d0 30%, #848890 50%, #a4a8b0 80%, #d4d8e0 100%);
+    --metal-gradient-gold: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+    --metal-gradient-dark-blue: linear-gradient(160deg, hsl(220, 20%, 4%) 0%, hsl(215, 80%, 45%) 45%, hsl(210, 100%, 80%) 50%, hsl(215, 80%, 45%) 55%, hsl(220, 20%, 4%) 100%);
 
     /* Spacing & Sizing */
     --radius-small: 8px;
@@ -17,14 +23,13 @@
     /* Shadows */
     --shadow-small: 0 4px 10px rgba(0, 0, 0, 0.2);
     --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.3);
-    --shadow-large: 0 12px 30px rgba(0, 123, 255, 0.5);
+    --shadow-large: 0 12px 30px rgba(182, 149, 255, 0.5);
 
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* --- Global Styles --- */
 * {
     margin: 0;
     padding: 0;
@@ -41,10 +46,9 @@ body {
     color: var(--text-light);
     text-align: center;
     overflow-x: hidden;
-    position: relative; /* Needed for background effect */
+    position: relative;
 }
 
-/* --- Aurora Background Effect --- */
 body::before {
     content: '';
     position: fixed;
@@ -52,13 +56,20 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 15% 25%, rgba(0, 123, 255, 0.15), transparent 40%),
-                radial-gradient(circle at 85% 75%, rgba(100, 0, 255, 0.15), transparent 40%);
+background: radial-gradient(circle at 20% 30%, rgba(128, 0, 128, 0.35), transparent 60%),
+            radial-gradient(circle at 80% 70%, rgba(72, 61, 139, 0.4), transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(25, 25, 112, 0.35), transparent 70%),
+            linear-gradient(135deg, #000000, #0a0a0f, #1a1a2e);
+
+    
+
+
+ /* dark base */
     z-index: -1;
     pointer-events: none;
 }
 
-/* --- Global Components --- */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -70,12 +81,13 @@ h1 {
     font-size: 3.8rem;
     font-weight: 700;
     margin-bottom: 20px;
-    background: linear-gradient(90deg, var(--text-light), var(--text-secondary), var(--text-light));
+    background: linear-gradient(90deg, #ffffff, #d0d8e8, #ffffff);
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: textShine 5s linear infinite;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 @keyframes textShine {
@@ -97,8 +109,9 @@ h2::after {
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: var(--primary-blue);
+    background: var(--primary-lavender);
     border-radius: 2px;
+    box-shadow: 0 0 8px var(--glow-color);
 }
 
 h3 {
@@ -123,21 +136,21 @@ p {
     font-weight: bold;
     text-decoration: none;
     transition: var(--transition-smooth);
-    border: none;
+    border: 1px solid var(--border-color);
     cursor: pointer;
     position: relative;
     overflow: hidden;
 }
 
 .primary-cta {
-    background: linear-gradient(90deg, #007BFF, #00C6FF);
-    color: white;
-    box-shadow: var(--shadow-medium);
+    background: linear-gradient(90deg, var(--primary-lavender), var(--secondary-green));
+    color: var(--background-dark);
+    box-shadow: 0 0 15px -5px var(--glow-color);
 }
 
 .primary-cta:hover {
     transform: translateY(-5px) scale(1.05);
-    box-shadow: var(--shadow-large);
+    box-shadow: 0 12px 30px rgba(182, 149, 255, 0.5);
 }
 
 .primary-cta::before {
@@ -147,16 +160,15 @@ p {
     left: -100%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
     transform: skewX(-30deg);
     transition: left 0.7s ease;
 }
+
 .primary-cta:hover::before {
     left: 150%;
 }
 
-
-/* --- Floating Frosted Navbar (UNCHANGED) --- */
 .navbar {
     position: fixed;
     top: 20px;
@@ -170,43 +182,50 @@ p {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background-color: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(22, 20, 26, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border-color);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
 .navbar.scrolled {
-    background-color: rgba(26, 25, 29, 0.75);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+    background-color: rgba(22, 20, 26, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     transform: translateX(-50%) translateY(-5px);
 }
+
 .logo { 
     font-size: 1.8rem; 
     font-weight: 700; 
-    color: var(--text-light, #f0f0f0);
+    color: var(--text-light);
 }
+
 .nav-links { 
     list-style: none; 
     display: flex; 
+    align-items: center;
     gap: 30px; 
     margin: 0;
     padding: 0;
 }
+
 .nav-links a { 
-    color: var(--text-light, #f0f0f0); 
+    color: var(--text-light); 
     text-decoration: none; 
     font-weight: 600; 
     position: relative;
     padding-bottom: 5px;
     transition: color var(--transition-fast);
 }
+
 .nav-links a:hover {
-    color: var(--primary-blue, #007BFF);
+    color: var(--primary-lavender);
+    text-shadow: 0 0 5px var(--glow-color);
 }
+
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -214,14 +233,32 @@ p {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--primary-blue, #007BFF);
+    background-color: var(--primary-lavender);
     transition: width var(--transition-fast);
 }
+
 .nav-links a:hover::after {
     width: 100%;
 }
 
-/* --- Hero Section --- */
+.nav-links .login-btn a {
+    padding: 8px 20px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, var(--primary-lavender), var(--secondary-green));
+    color: var(--background-dark);
+    transition: all var(--transition-fast);
+}
+
+.nav-links .login-btn a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--glow-color);
+    color: var(--background-dark);
+}
+
+.nav-links .login-btn a::after {
+    display: none;
+}
+
 .hero {
     height: 100vh;
     display: flex;
@@ -230,54 +267,56 @@ p {
     align-items: center;
     padding: 0 20px;
 }
+
 .hero .hero-ctas {
-    margin-top: 0px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
-/* --- Logos Section --- */
-.logos-section {
-    padding: 0px 0px;
-}
 .logos-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 50px;
     margin-top: 40px;
+    flex-wrap: wrap;
 }
-.logos-container svg {
+
+.logos-container svg,
+.logos-container img {
     filter: grayscale(100%) opacity(0.6);
     transition: filter var(--transition-fast), transform var(--transition-fast);
 }
-.logos-container svg:hover {
+
+.logos-container svg:hover,
+.logos-container img:hover {
     filter: grayscale(0%) opacity(1);
     transform: scale(1.05);
 }
 
-/* --- Grid & Card System --- */
 .grid-3-col, .grid-4-col {
     display: grid;
     gap: 30px;
     margin-top: 50px;
 }
+
 .grid-3-col { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .grid-4-col { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-
+/* ADD THESE TWO NEW RULES */
 .card-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; /* This is the magic property that centers the rows */
     gap: 30px;
     margin-top: 50px;
 }
-.card-grid > .card {
-    flex-basis: calc(33.333% - 20px);
-    min-width: 300px;
-}
 
+.card-grid > .card {
+    /* This tells each card how wide it should be */
+    flex-basis: 350px;
+}
 .card {
     background-color: var(--card-bg);
     padding: 30px;
@@ -285,29 +324,20 @@ p {
     border: 1px solid var(--border-color);
     position: relative;
     overflow: hidden;
-    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-fast);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
 }
 
-.card::before {
-   display: none;
-}
-
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 
-                0 0 25px var(--glow-color);
-}
-.card > * {
-    position: relative;
-    z-index: 2;
+    box-shadow: 0 0 25px var(--glow-color);
+    border-color: var(--primary-lavender);
 }
 
-/* --- Specific Card Styles --- */
 .why-us-card {
     flex-direction: row;
     justify-content: flex-start;
@@ -315,13 +345,15 @@ p {
     align-items: center;
     gap: 15px;
 }
+
 .why-us-card svg {
     flex-shrink: 0;
     width: 32px;
     height: 32px;
-    color: #28a745;
+    color: var(--secondary-green);
     transition: transform var(--transition-fast);
 }
+
 .card:hover .why-us-card svg {
     transform: scale(1.2);
 }
@@ -340,37 +372,26 @@ p {
     display: inline-block;
     text-align: left;
 }
+
 .pricing-card .features-list li { 
     margin-bottom: 12px; 
     position: relative;
     padding-left: 25px;
 }
+
 .pricing-card .features-list li::before {
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--primary-blue);
+    color: var(--primary-lavender);
     font-weight: bold;
 }
+
 .pricing-card .cta-button { 
     display: block; 
     text-align: center;
-    margin-top: auto; /* This pushes the button to the bottom */
-}
-
-.process-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-.step-number {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--primary-blue);
-    transition: color var(--transition-fast);
-}
-.card:hover .step-number {
-    color: var(--text-light);
+    width: 100%;
+    margin-top: auto;
 }
 
 .form-input {
@@ -383,76 +404,66 @@ p {
     text-align: center;
     transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
+
 .form-input:focus {
     outline: none;
-    border-color: var(--primary-blue);
+    border-color: var(--primary-lavender);
     box-shadow: 0 0 10px var(--glow-color);
 }
 
-
-/* --- Footer --- */
 .footer {
     padding: 60px 20px;
     border-top: 1px solid var(--border-color);
 }
+
 .footer .logo { margin-bottom: 20px; }
 .footer-links { list-style: none; display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; }
 .footer-links a { color: var(--text-secondary); text-decoration: none; transition: color var(--transition-fast); }
-.footer-links a:hover { color: var(--primary-blue); }
+.footer-links a:hover { color: var(--primary-lavender); }
 .footer p { font-size: 0.9rem; }
 
-/* --- Scroll Animation Classes --- */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 15px var(--glow-color); }
+    50% { box-shadow: 0 0 30px var(--glow-color); }
 }
 
-/* --- Floating Contact Button --- */
+@keyframes floatAndBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
 .floating-contact-btn {
     position: fixed;
     bottom: 25px;
     right: 25px;
     z-index: 1000;
-    background: linear-gradient(45deg, #007BFF, #0056b3);
-    color: white;
+    background: linear-gradient(45deg, var(--primary-lavender), var(--secondary-green));
+    color: var(--background-dark);
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    box-shadow: var(--shadow-medium);
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     cursor: pointer;
-    transition: all var(--transition-smooth);
-    animation: floatAndBob 3s ease-in-out infinite; 
+    transition: all 0.3s ease-in-out;
+    animation: floatAndBob 3s ease-in-out infinite, glowPulse 2.5s ease-in-out infinite;
 }
+
 .floating-contact-btn:hover {
     transform: translateY(-8px) scale(1.1);
-    background: linear-gradient(45deg, #00C6FF, #007BFF);
-    box-shadow: var(--shadow-large);
+    box-shadow: 0 12px 30px rgba(182, 149, 255, 0.5);
     animation: none;
 }
-@keyframes floatAndBob {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0); }
-}
+
 .floating-contact-btn svg {
     width: 60%;
     height: 60%;
 }
 
-/* --- Responsive Navbar (Hamburger Menu) --- */
-
-/* Style for the hamburger button itself */
 .hamburger-menu {
-    display: none; /* Hidden on desktop */
+    display: none;
     flex-direction: column;
     justify-content: space-around;
     width: 2.25rem;
@@ -473,8 +484,381 @@ p {
     transition: all 0.3s ease-in-out;
 }
 
-/* Media query for mobile devices (tablets and smaller) */
+body.menu-open {
+    overflow: hidden;
+}
+
+.demo-section {
+    padding: 100px 20px;
+}
+
+.demo-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.left-panel, .right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 2;
+}
+
+.option {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: .25s ease;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+.option:not(.active):hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+}
+
+.option.active { 
+    background: rgba(182, 149, 255, 0.2);
+    color: #fff;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 0 15px -3px var(--glow-color);
+}
+
+.disc-container { 
+    width: 450px; 
+    height: 450px; 
+    position: relative; 
+}
+/* --- ADD these new keyframes for the ripple effect --- */
+@keyframes rippleFill {
+  0% {
+    background-size: 0% 0%;
+    opacity: 0.8;
+  }
+  50% {
+    background-size: 150% 150%;
+    opacity: 1;
+  }
+  100% {
+    background-size: 200% 200%;
+    opacity: 0;
+  }
+}
+
+@keyframes siri-pulse {
+  0% {
+    background-position: 0% 50%, 100% 50%, 50% 0%;
+    background-size: 100% 100%, 100% 100%, 100% 100%;
+  }
+  50% {
+    background-position: 100% 80%, 20% 100%, 80% 40%;
+    background-size: 120% 120%, 110% 110%, 130% 130%;
+  }
+  100% {
+    background-position: 0% 50%, 100% 50%, 50% 0%;
+    background-size: 100% 100%, 100% 100%, 100% 100%;
+  }
+}
+/* --- REPLACE your old .main-disc rule with this block --- */
+
+/* This is now the main container: it doesn't spin or ripple. */
+/* MODIFY this rule */
+.main-disc {
+    width: 100%; 
+    height: 100%; 
+    border-radius: 50%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    
+    /* ADD these styles for the static/paused look */
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.3);
+    
+    /* REMOVE the outer glow from here */
+}
+/* This pseudo-element handles the ROTATING background. */
+.main-disc::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+
+    /* ✨ KEY CHANGES HERE ✨ */
+    /* Replaced the metallic gradient with a transparent white fill. */
+    background: rgba(208, 205, 205, 0.005); 
+    
+    /* Updated the shadow to a white inner glow for a "frosted" look. */
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.5);
+    
+    animation: spin 12s linear infinite;
+    animation-play-state: paused;
+}
+
+
+/* 1. Add these keyframes for the "swirling" effect */
+@keyframes siri-active {
+  0% {
+    background-position: 0% 0%, 100% 50%, 0% 100%;
+    /* MODIFIED: Increased size for full coverage */
+    background-size: 125% 125%, 125% 125%, 125% 125%;
+  }
+  50% {
+    background-position: 50% 50%, 50% 50%, 50% 50%;
+    /* MODIFIED: Increased size for a fuller swell effect */
+    background-size: 150% 150%, 150% 150%, 150% 150%;
+  }
+  100% {
+    background-position: 100% 100%, 0% 50%, 100% 0%;
+    /* MODIFIED: Increased size for full coverage */
+    background-size: 125% 125%, 125% 125%, 125% 125%;
+  }
+}
+/* 2. REPLACE your existing .main-disc::after rule with this one */
+.main-disc::after {
+    content: '';
+    position: absolute;
+    inset: -2px; 
+    z-index: 2;
+    border-radius: inherit;
+    
+    background-image: 
+        radial-gradient(circle, rgb(47, 158, 205), transparent 40%),
+        radial-gradient(circle, rgb(207, 155, 23), transparent 40%),
+        radial-gradient(circle, magenta, transparent 40%),
+        radial-gradient(circle, rgb(224, 73, 18), transparent 40%),
+        radial-gradient(circle, rgb(75, 213, 114), transparent 40%);
+
+    background-size: 80% 80%, 80% 80%, 80% 80%;
+    background-position: 0% 0%, 100% 50%, 0% 100%;
+    background-repeat: no-repeat;
+    
+    /* Use the new siri-active animation */
+    animation: siri-active 6s ease-in-out infinite;
+    animation-play-state: paused;
+    
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* 3. Make sure this rule correctly targets the ::after element's opacity */
+.disc-container.playing .main-disc::after {
+    animation-play-state: running;
+    opacity: 1; 
+}
+/* --- MODIFY your .play-btn rule --- */
+/* Add a z-index to ensure the button is on top of the new effects. */
+.play-btn {
+    width: 80px; 
+    height: 80px; 
+    border-radius: 50%;
+    background: var(--metal-gradient-silver); 
+    border: 0; 
+    cursor: pointer;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.8),
+                inset 0 -2px 5px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 3; /* ADD THIS to ensure it's on top */
+}
+
+/* --- REPLACE your old ".disc-container.playing .main-disc" rule --- */
+/* This now controls the play state for BOTH animations. */
+.disc-container.playing .main-disc::before{
+    animation-play-state: running;
+}
+
+/* MODIFY this rule */
+.play-btn {
+    width: 90px; 
+    height: 90px; 
+    border-radius: 50%;
+    background: #fff; 
+    border: 0; 
+    cursor: pointer;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(0,0,0,.2);
+    position: relative; /* ADD THIS LINE */
+}
+.play-btn svg.wave-icon { 
+    width: 40px; 
+    height: 40px; 
+}
+
+.play-btn line { 
+    stroke: #000; 
+    stroke-linecap: round; 
+    stroke-width: 3; 
+    transform-origin: center bottom; 
+}
+
+/* REPLACE the old ".playing line" rules with these three new ones */
+.disc-container.playing .play-btn line { 
+    animation: pulse 1s ease-in-out infinite; 
+}
+
+.disc-container.playing .play-btn line:nth-child(2){ 
+    animation-delay: .2s; 
+}
+
+.disc-container.playing .play-btn line:nth-child(3){ 
+    animation-delay: .4s; 
+}
+
+.disc-container.playing .main-disc {
+    animation-play-state: running;
+}
+
+.play-btn .play-icon,
+.play-btn .wave-icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.play-btn .play-icon {
+    fill: #000;
+    opacity: 1; 
+    transform: scale(1) rotate(0deg);
+}
+
+.play-btn svg.wave-icon {
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    transform: scale(0) rotate(-45deg);
+}
+
+.disc-container.playing .play-btn .play-icon {
+    opacity: 0;
+    transform: scale(0) rotate(45deg);
+}
+
+.disc-container.playing .play-btn .wave-icon {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+@keyframes pulse { 
+    0%,100%{transform:scaleY(.55)} 
+    50%{transform:scaleY(1.2)} 
+}
+
+@keyframes spin { 
+    to { transform: rotate(360deg); } 
+}
+
+.connectors {
+    position: absolute; 
+    inset: 0;
+    width: 100%; 
+    height: 100%;
+    pointer-events: none; 
+    z-index: 1;
+}
+
+.connectors path {
+    stroke: #fff; 
+    stroke-width: 2; 
+    fill: none;
+    transition: stroke-dashoffset 420ms ease;
+}
+
+@media (max-width: 1024px) {
+    .disc-container {
+        width: 350px;
+        height: 350px;
+    }
+}
+/* In your style.css file, replace the old trail-dot rules */
+
+.trail-dot {
+    position: fixed;
+    /* Using your new lavender theme color */
+    background-color: var(--primary-lavender);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    
+    /* Make it a soft glow instead of a hard dot */
+    box-shadow: 0 0 10px var(--primary-lavender), 0 0 15px var(--primary-lavender);
+
+    pointer-events: none;
+    z-index: 9999;
+    
+    /* Center the dot on the cursor's true position */
+    left: 0;
+    top: 0;
+
+    /* Start hidden and fade in smoothly */
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+}
+
+/* This class will be added by JS on the first mouse move */
+.mouse-has-moved .trail-dot {
+    opacity: 1;
+}
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+}
+
+.reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+    .disc-container {
+        width: 300px;
+        height: 300px;
+    }
+}
+
 @media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    .container { padding: 80px 20px; }
+    .demo-container, .hero-ctas {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .left-panel, .right-panel {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .disc-container {
+        width: 250px;
+        height: 250px;
+        order: -1;
+    }
+    .grid-3-col, .grid-4-col {
+        grid-template-columns: 1fr;
+    }
+.hero-ctas {
+        flex-direction: column;
+    }
     .nav-links {
         position: fixed;
         top: 0;
@@ -487,24 +871,19 @@ p {
         justify-content: center;
         align-items: center;
         gap: 40px;
-        transform: translateX(100%); /* Hide the menu off-screen */
+        transform: translateX(100%);
         transition: transform 0.4s ease-in-out;
         border-left: 1px solid var(--border-color);
     }
-
     .nav-links.active {
-        transform: translateX(0); /* Slide the menu in */
+        transform: translateX(0);
     }
-
     .nav-links a {
         font-size: 1.2rem;
     }
-
     .hamburger-menu {
-        display: flex; /* Show the hamburger on mobile */
+        display: flex;
     }
-
-    /* Animation for hamburger to 'X' */
     .hamburger-menu.active .bar:nth-child(1) {
         transform: translateY(10px) rotate(45deg);
     }
@@ -516,7 +895,68 @@ p {
     }
 }
 
-/* Optional: Prevents scrolling on the body when the mobile menu is open */
-body.menu-open {
-    overflow: hidden;
+/* --- Call-to-Action Section Below Disc --- */
+
+/* This styles the main container as a card and adds spacing */
+.call-agent-cta.card {
+    max-width: 600px;
+    margin: 80px auto 0 auto; /* Adds space above the card */
+    display: flex; /* Use flexbox for better internal alignment */
+    flex-direction: column;
+    align-items: center;
+}
+
+.call-agent-cta h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+/* Flex container for the input, dropdown, and button */
+.phone-input-group {
+    display: flex;
+    width: 100%; /* Ensure the group takes up the full width of the card */
+    align-items: center;
+    gap: 10px;
+}
+
+/* Styling for the country code dropdown */
+.country-code-select {
+    background-color: var(--card-bg);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-small);
+    padding: 15px 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    flex-shrink: 0; /* Prevents the dropdown from shrinking */
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.country-code-select:focus {
+    outline: none;
+    border-color: var(--primary-lavender);
+    box-shadow: 0 0 10px var(--glow-color);
+}
+
+/* Make the phone input field take up the available space */
+.phone-input-group .phone-input {
+    flex-grow: 1;
+    text-align: left;
+    padding-left: 15px;
+}
+
+/* Adjust the call button's padding and prevent shrinking */
+.phone-input-group .cta-button {
+    padding: 15px 30px;
+    flex-shrink: 0;
+}
+.country-code-select {
+    text-align: left;        /* aligns text */
+    text-align-last: left;   /* aligns selected option */
+}
+.country-code-select option {
+    text-align: left;       /* Align dropdown list items */
 }
