@@ -3,62 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StrategixAI - AI Automation for Your Business</title>
+    <title>OptivixAI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="style.css">
-    
 </head>
 <body>
+    
+  <div class="dynamic-bg"></div>
 
-<nav class="navbar">
-    <div class="logo">StrategixAI</div>
 
-    <button class="hamburger-menu" aria-label="Open navigation menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </button>
+  <div class="trail-dot"></div>
+  <div class="trail-dot"></div>
+  <div class="trail-dot"></div>
+  <div class="trail-dot"></div>
+  <div class="trail-dot"></div>
+  <div class="trail-dot"></div>
+  <div class="trail-dot"></div>
+  <div class="trail-dot"></div>
+  <div class="trail-dot"></div>
+  <div class="trail-dot"></div>
 
-    <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#casestudies">Case Studies</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
+
+    <nav class="navbar">
+        <div class="logo">Optivix</div>
+        <button class="hamburger-menu" aria-label="Open navigation menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+                        <li><a href="#demo">Demo</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#casestudies">Case Studies</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="login-btn"><a href="#">Login</a></li>
+        </ul>
+    </nav>
 
     <header class="hero">
         <h1>Automate Your Business with AI.</h1>
         <p>We help businesses streamline operations, generate leads, and increase revenue through custom AI automation systems. Save time, cut costs, and scale faster.</p>
         <div class="hero-ctas">
+            <a href="#demo" class="cta-button primary-cta">Try Our Demo</a>
             <a href="#contact" class="cta-button primary-cta">Book a Free Demo</a>
         </div>
     </header>
 
-    <main>
-        <section id="about" class="logos-section">
+
+
+    
+        <section id="demo" class="demo-section">
             <div class="container">
-                <h2>Trusted By Forward-Thinking Businesses</h2> <br><br><br>
-                <p style="font-size: 24px;">We're an AI automation agency dedicated to helping entrepreneurs, agencies, and enterprises leverage the latest AI tools to unlock new growth opportunities.</p>
-                <div class="logos-container">
-                    <svg width="120" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
-                    <svg width="120" height="40" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
-                    <svg width="120" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M9 9h6v6H9z"></path><rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect></svg>
+                <h2>Experience Our AI Voices</h2>
+                <p>Select a role and character to hear how our AI agents can transform your business communications</p>
+                
+                <div class="demo-container">
+                    <div class="left-panel">
+                        <div class="option active" data-color="black">SUPPORT AGENT</div>
+                        <div class="option" data-color="bronze">CHESS COACH</div>
+                        <div class="option" data-color="silver">GAME CHARACTER</div>
+                        <div class="option" data-color="gold">CONCIERGE</div>
+                        <div class="option" data-color="cd">TRAINER</div>
+                    </div>
+
+                    <div class="center-panel">
+                        <div class="disc-container">
+    <div class="main-disc glow" id="main-disc">
+        <button class="play-btn" id="play-btn" aria-label="Play/Pause Demo">
+            <svg class="play-icon" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"></path>
+            </svg>
+            <svg class="wave-icon" viewBox="0 0 24 24">
+                <line x1="6" y1="20" x2="6" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="6"></line>
+                <line x1="18" y1="20" x2="18" y2="14"></line>
+            </svg>
+        </button>
+    </div>
+</div>
+        </div>
+                    <div class="right-panel">
+                        <div class="option active" data-color="black">JESSICA</div>
+                        <div class="option" data-color="bronze">LILY</div>
+                        <div class="option" data-color="silver">ERIC</div>
+                        <div class="option" data-color="gold">WILL</div>
+                        <div class="option" data-color="cd">MATILDA</div>
+                    </div>
+
+                    <svg id="connectors" class="connectors"></svg>
                 </div>
-            </div>
+            </div><div class="call-agent-cta card">
+    <h4>Want to try our agent? Give us a call.</h4>
+    <div class="phone-input-group">
+        <div class="select-wrapper">
+            <select name="country-code" id="country-code-select" class="country-code-select" style="align-items: center;">
+                <!-- Common countries first -->
+                <option value="+91" selected>IN +91</option>
+                <option value="+1">US +1</option>
+                <option value="+44">UK +44</option>
+                <option value="+61">AU +61</option>
+                <!-- All other countries will be added here by JavaScript -->
+                <optgroup label="Others" id="all-countries-optgroup"></optgroup>
+            </select>
+        </div>
+        <input type="tel" class="form-input phone-input" placeholder="Enter your phone number">
+        <button class="cta-button primary-cta">Call</button>
+    </div>
+</div>
         </section>
 
-        
-<section id="services" class="container">
+    <main>
+
+<section id="about" class="logos-section">
+    <div class="container">
+        <h2>Trusted By Forward-Thinking Businesses</h2> <br><br><br>
+        <p style="font-size: 24px;">We're an AI automation agency dedicated to helping entrepreneurs, agencies, and enterprises leverage the latest AI tools to unlock new growth opportunities.</p>
+        <div class="logos-container">
+            <img src="assets/startup-india-logo.png" alt="Startup India Logo" height="160">
+            <img src="assets/rp.png" alt="Strive" height="160">
+            <img src="assets/slack.png" alt="Slack" height="60">
+            <img src="assets/hubspot.png" alt="Hubspot" height="60">
+            <img src="assets/notion.png" alt="Notion" height="60">
+        </div>
+    </div>
+</section>
+        <section id="services" class="container">
             <h2>AI Automation Services for Growth</h2>
             <p>Our intelligent systems are designed to automate key business functions, freeing you to focus on what matters most.</p>
-            
-            <!-- EDITED: Changed class from "grid-3-col" to "card-grid" -->
             <div class="card-grid">
                 <div class="card">
                     <h3>AI Customer Support Agents</h3>
@@ -84,9 +159,9 @@
         </section>
 
         <section id="why-us" class="container">
-             <h2>The Strategic Advantage</h2>
-             <p>Our systems deliver tangible results that directly impact your bottom line and operational efficiency.</p>
-             <div class="grid-3-col">
+            <h2>The Strategic Advantage</h2>
+            <p>Our systems deliver tangible results that directly impact your bottom line and operational efficiency.</p>
+            <div class="grid-3-col">
                 <div class="card why-us-card">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
                     <h3>Save 30+ Hours/Week</h3>
@@ -95,14 +170,14 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
                     <h3>Cut Costs by up to 50%</h3>
                 </div>
-                 <div class="card why-us-card">
+                <div class="card why-us-card">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
                     <h3>Boost Revenue & Conversions</h3>
                 </div>
             </div>
         </section>
-        
-        <section id="industries" class="container" style="background-color: var(--card-bg);">
+
+        <section id="industries" class="container">
             <h2>Industries We Empower</h2>
             <p>We build custom AI solutions for a wide range of forward-thinking businesses.</p>
             <div class="grid-3-col">
@@ -114,7 +189,7 @@
                 <div class="card"><h3>Home Services</h3></div>
             </div>
         </section>
-        
+
         <section id="pricing" class="container">
             <h2>Simple, Transparent Pricing</h2>
             <p>Choose a plan that fits your needs. All plans begin with a one-time setup fee of $199 for onboarding and integration.</p>
@@ -123,9 +198,9 @@
                     <h3>Starter</h3>
                     <p class="price">$249<span style="font-size: 1rem; color: var(--text-secondary);">/mo</span></p>
                     <ul class="features-list">
-                        <li>• 1 AI Voice Agent</li>
-                        <li>• 1 Integration (CRM, Calendar, etc.)</li>
-                        <li>• Standard Support</li>
+                        <li>1 AI Voice Agent</li>
+                        <li>1 Integration</li>
+                        <li>Standard Support</li>
                     </ul>
                     <a href="#contact" class="cta-button primary-cta">Get Started</a>
                 </div>
@@ -133,9 +208,9 @@
                     <h3>Growth</h3>
                     <p class="price">$499<span style="font-size: 1rem; color: var(--text-secondary);">/mo</span></p>
                     <ul class="features-list">
-                        <li>• Up to 5 AI Voice Agents</li>
-                        <li>• 3 Integrations</li>
-                        <li>• Advanced Reporting</li>
+                        <li>Up to 5 AI Voice Agents</li>
+                        <li>3 Integrations</li>
+                        <li>Advanced Reporting</li>
                     </ul>
                     <a href="#contact" class="cta-button primary-cta">Get Started</a>
                 </div>
@@ -143,9 +218,9 @@
                     <h3>Scale</h3>
                     <p class="price">$799<span style="font-size: 1rem; color: var(--text-secondary);">/mo</span></p>
                     <ul class="features-list">
-                        <li>• Up to 10 AI Voice Agents</li>
-                        <li>• Unlimited Integrations</li>
-                        <li>• Custom Workflows</li>
+                        <li>Up to 10 AI Voice Agents</li>
+                        <li>Unlimited Integrations</li>
+                        <li>Custom Workflows</li>
                     </ul>
                     <a href="#contact" class="cta-button primary-cta">Get Started</a>
                 </div>
@@ -153,27 +228,27 @@
                     <h3>Enterprise</h3>
                     <p class="price">$1,099+<span style="font-size: 1rem; color: var(--text-secondary);">/mo</span></p>
                     <ul class="features-list">
-                        <li>• 15+ AI Voice Agents</li>
-                        <li>• Unlimited Integrations</li>
-                        <li>• White-Label Option</li>
-                        <li>• Dedicated Account Manager</li>
+                        <li>15+ AI Voice Agents</li>
+                        <li>Unlimited Integrations</li>
+                        <li>White-Label Option</li>
+                        <li>Dedicated Account Manager</li>
                     </ul>
-                    <a href="#contact" class="cta-button primary-cta">Contact Us</a>
+                    <a href="#contact" class="cta-button primary-cta">Get Started</a>
                 </div>
             </div>
         </section>
 
-        <section id="casestudies" class="container" style="background-color: var(--card-bg);">
+        <section id="casestudies" class="container">
             <h2>Real-World Results</h2>
             <p>See how our AI solutions have transformed businesses just like yours.</p>
             <div class="grid-3-col" style="grid-template-columns: 1fr 1fr;">
-                 <div class="card">
+                <div class="card">
                     <h3>Local Painting Company</h3>
                     <p><strong>Challenge:</strong> Missed calls and slow lead follow-up.<br><strong>Solution:</strong> Implemented a 24/7 AI Voice and SMS agent.<br><strong>Result:</strong> Doubled booked appointments in the first month.</p>
                 </div>
                 <div class="card">
                     <h3>E-commerce Store</h3>
-                    <p><strong>Challenge:</strong> Overwhelmed support team and long response times.<br><strong>Solution:</strong> Deployed a website and social media support agent.<br><strong>Result:</strong> Automated 70% of queries, reducing response time to under 2 minutes.</p>
+                    <p><strong>Challenge:</strong> Overwhelmed support team.<br><strong>Solution:</strong> Deployed a website support agent.<br><strong>Result:</strong> Automated 70% of queries, reducing response time to under 2 minutes.</p>
                 </div>
             </div>
         </section>
@@ -182,11 +257,9 @@
             <h2>Ready to Automate Your Business?</h2>
             <p>Book a free, no-obligation demo to discover how AI can transform your operations and drive growth.</p>
             <form action="#" method="post" style="max-width: 500px; margin: 40px auto 0 auto; display: grid; gap: 20px;">
-                <input type="text" name="name" placeholder="Your Name" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-light); font-size: 1rem; text-align: center;">
-
-<input type="email" name="email" placeholder="Your Business Email" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-light); font-size: 1rem; text-align: center;">
-
-<input type="phone" name="phone" placeholder="Your Phone" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-light); font-size: 1rem; text-align: center;">
+                <input type="text" name="name" placeholder="Your Name" required class="form-input">
+                <input type="email" name="email" placeholder="Your Business Email" required class="form-input">
+                <input type="phone" name="phone" placeholder="Your Phone" required class="form-input">
                 <button type="submit" class="cta-button primary-cta">Book Your Free Demo</button>
             </form>
         </section>
@@ -204,10 +277,106 @@
         <p>&copy; 2025 StrategixAI. All Rights Reserved.</p>
     </footer>
     <a href="#contact" class="floating-contact-btn" aria-label="Contact Us">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
-    </svg>
-</a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
+        </svg>
+    </a>
 
+    <script src="script.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- Main initialization function ---
+    function init() {
+        initScrollAnimations();
+        initCursorTrail();
+    }
+
+    // --- 1. Lively Scroll Animations (Improved) ---
+    function initScrollAnimations() {
+        const elementsToReveal = document.querySelectorAll('.reveal-on-scroll');
+        
+        // Do nothing if no elements are found
+        if (elementsToReveal.length === 0) return;
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Stop observing the element once it's visible
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        elementsToReveal.forEach(element => observer.observe(element));
+    }
+
+    // --- 2. High-Speed Cohesive Cursor Trail (Updated & Dynamic) ---
+    function initCursorTrail() {
+        // --- CONFIGURATION ---
+        const DOT_COUNT = 15; // How many dots in the trail
+        const EASING_FACTOR = 0.5; // Springiness: lower is slower/more delayed, higher is faster/stiffer
+
+        const dots = [];
+        const positions = [];
+        const mouse = { x: 0, y: 0 };
+        let hasMoved = false;
+
+        // --- SETUP ---
+        // Create the dot elements dynamically
+        for (let i = 0; i < DOT_COUNT; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('trail-dot');
+            document.body.appendChild(dot);
+            dots.push(dot);
+            positions.push({ x: 0, y: 0 });
+        }
+
+        // --- EVENT LISTENER ---
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+
+            // On the first move, add a class to the body to make dots visible
+            if (!hasMoved) {
+                document.body.classList.add('mouse-has-moved');
+                hasMoved = true;
+            }
+        });
+
+        // --- ANIMATION LOOP ---
+        function animateDots() {
+            let targetX = mouse.x;
+            let targetY = mouse.y;
+
+            // Loop through each dot and update its position with easing
+            dots.forEach((dot, index) => {
+                const pos = positions[index];
+                
+                // The dot moves a fraction of the distance towards its target each frame
+                pos.x += (targetX - pos.x) * EASING_FACTOR;
+                pos.y += (targetY - pos.y) * EASING_FACTOR;
+
+                // Apply the new position. The offset (-5) centers the dot.
+                dot.style.transform = `translate(${pos.x - 5}px, ${pos.y - 5}px)`;
+                
+                // The target for the next dot is the new position of the current dot
+                targetX = pos.x;
+                targetY = pos.y;
+            });
+
+            requestAnimationFrame(animateDots);
+        }
+
+        // Start the animation loop
+        animateDots();
+    }
+
+    // Run all setup functions
+    init();
+
+});
+</script>
 </body>
 </html>
