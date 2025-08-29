@@ -834,31 +834,16 @@ body.menu-open {
         height: 300px;
     }
 }
-
+/* --- Responsive Styles for Mobile Phones --- */
 @media (max-width: 768px) {
+    
+    /* --- General Typography & Layout --- */
     h1 { font-size: 2.5rem; }
     h2 { font-size: 2rem; }
     .container { padding: 80px 20px; }
-    .demo-container, .hero-ctas {
-        flex-direction: column;
-        gap: 40px;
-    }
-    .left-panel, .right-panel {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .disc-container {
-        width: 250px;
-        height: 250px;
-        order: -1;
-    }
-    .grid-3-col, .grid-4-col {
-        grid-template-columns: 1fr;
-    }
-.hero-ctas {
-        flex-direction: column;
-    }
+    .hero-ctas { flex-direction: column; }
+
+    /* --- Navbar --- */
     .nav-links {
         position: fixed;
         top: 0;
@@ -875,26 +860,54 @@ body.menu-open {
         transition: transform 0.4s ease-in-out;
         border-left: 1px solid var(--border-color);
     }
-    .nav-links.active {
-        transform: translateX(0);
+    .nav-links.active { transform: translateX(0); }
+    .nav-links a { font-size: 1.2rem; }
+    .hamburger-menu { display: flex; }
+    .hamburger-menu.active .bar:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+    .hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger-menu.active .bar:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+    /* --- Demo Section --- */
+    .demo-container {
+        flex-direction: column;
+        gap: 40px;
     }
-    .nav-links a {
-        font-size: 1.2rem;
+    .left-panel, .right-panel {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
     }
-    .hamburger-menu {
-        display: flex;
+    .disc-container {
+        width: 250px;
+        height: 250px;
+        order: -1; /* Puts the disc at the top */
     }
-    .hamburger-menu.active .bar:nth-child(1) {
-        transform: translateY(10px) rotate(45deg);
+
+    /* --- Call Agent Box --- */
+    .phone-input-group {
+        flex-direction: column; /* Stack the inputs vertically */
+        align-items: stretch; /* Make items full-width */
     }
-    .hamburger-menu.active .bar:nth-child(2) {
-        opacity: 0;
+    .custom-select-container {
+        width: 100%;
     }
-    .hamburger-menu.active .bar:nth-child(3) {
-        transform: translateY(-10px) rotate(-45deg);
+    .country-code-search-input {
+        width: 100%;
+    }
+    .country-code-dropdown {
+        width: 100%; /* Make dropdown list full width */
+        bottom: auto; /* Position it below the input */
+        top: 110%;
+    }
+
+    /* --- Card Grids --- */
+    .card-grid > .card {
+        flex-basis: 100%;
+    }
+    .grid-3-col, .grid-4-col {
+        grid-template-columns: 1fr;
     }
 }
-
 /* --- Call-to-Action Section Below Disc --- */
 
 /* This styles the main container as a card and adds spacing */
