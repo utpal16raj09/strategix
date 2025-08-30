@@ -485,6 +485,8 @@ p {
 }
 
 body.menu-open {
+    position: fixed;
+    width: 80%;
     overflow: hidden;
 }
 
@@ -661,49 +663,43 @@ body.menu-open {
 }
 /* --- MODIFY your .play-btn rule --- */
 /* Add a z-index to ensure the button is on top of the new effects. */
-.play-btn {
-    width: 80px; 
-    height: 80px; 
-    border-radius: 50%;
-    background: var(--metal-gradient-silver); 
-    border: 0; 
-    cursor: pointer;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.8),
-                inset 0 -2px 5px rgba(0, 0, 0, 0.4);
-    position: relative;
-    z-index: 3; /* ADD THIS to ensure it's on top */
-}
+
 
 /* --- REPLACE your old ".disc-container.playing .main-disc" rule --- */
 /* This now controls the play state for BOTH animations. */
 .disc-container.playing .main-disc::before{
     animation-play-state: running;
 }
-
-/* MODIFY this rule */
 .play-btn {
     width: 90px; 
     height: 90px; 
     border-radius: 50%;
-    background: #fff; 
-    border: 0; 
+    background: transparent;          /* button stays white */
+    border: none;
     cursor: pointer;
     display: flex; 
     align-items: center; 
     justify-content: center;
-    box-shadow: 0 0 15px rgba(0,0,0,.2);
-    position: relative; /* ADD THIS LINE */
+    box-shadow: 0 2px 6px rgba(243, 242, 242, 0.25); /* subtle outer shadow */
+    position: relative;
+    z-index: 3;
 }
+
+.play-btn .play-icon {
+    width: 40px; 
+    height: 40px;
+    fill: #fff;              /* ✅ triangle is white */
+    stroke: #f5f2f2;            /* thin black stroke for visibility */
+    stroke-width: 0px;     /* adjust for boldness */
+}
+
 .play-btn svg.wave-icon { 
     width: 40px; 
     height: 40px; 
 }
 
 .play-btn line { 
-    stroke: #000; 
+    stroke: #f6f3f3; 
     stroke-linecap: round; 
     stroke-width: 3; 
     transform-origin: center bottom; 
@@ -788,35 +784,7 @@ body.menu-open {
         height: 350px;
     }
 }
-/* In your style.css file, replace the old trail-dot rules */
 
-.trail-dot {
-    position: fixed;
-    /* Using your new lavender theme color */
-    background-color: var(--primary-lavender);
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    
-    /* Make it a soft glow instead of a hard dot */
-    box-shadow: 0 0 10px var(--primary-lavender), 0 0 15px var(--primary-lavender);
-
-    pointer-events: none;
-    z-index: 9999;
-    
-    /* Center the dot on the cursor's true position */
-    left: 0;
-    top: 0;
-
-    /* Start hidden and fade in smoothly */
-    opacity: 0;
-    transition: opacity 0.4s ease-out;
-}
-
-/* This class will be added by JS on the first mouse move */
-.mouse-has-moved .trail-dot {
-    opacity: 1;
-}
 .reveal-on-scroll {
     opacity: 0;
     transform: translateY(30px);
@@ -834,33 +802,53 @@ body.menu-open {
         height: 300px;
     }
 }
+
 /* --- Responsive Styles for Mobile Phones --- */
 @media (max-width: 768px) {
     
+    /* --- Prevent horizontal scrolling --- */
+    html, body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+     .connectors {
+    display: none !important;
+  }
     /* --- General Typography & Layout --- */
     h1 { font-size: 2.5rem; }
     h2 { font-size: 2rem; }
-    .container { padding: 80px 20px; }
-    .hero-ctas { flex-direction: column; }
-
-    /* --- Navbar --- */
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100vh;
-        width: 70%;
-        max-width: 300px;
-        background-color: var(--card-bg);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-        transform: translateX(100%);
-        transition: transform 0.4s ease-in-out;
-        border-left: 1px solid var(--border-color);
+    .container { 
+        padding: 60px 10px;
+        max-width: 100%;
+        box-sizing: border-box;
     }
-    .nav-links.active { transform: translateX(0); }
+    .hero-ctas { flex-direction: column; }
+/* --- In your style.css file, inside the @media (max-width: 768px) block --- */
+
+.nav-links {
+  position: fixed;
+  top: -20px;      /* ADD THIS: Pushes the menu to the absolute top */
+  right: -20px;    /* ADD THIS: Pushes the menu to the absolute right */
+  height: 100vh; /* Ensures it's full viewport height */
+  width: 70%;
+  max-width: 300px;
+  margin: 0;   /* ADD THIS: Removes any potential default margin */
+  
+  background-color: var(--card-bg);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+  border-left: 1px solid var(--border-color);
+  box-sizing: border-box;
+  z-index: 1000;
+}
+    .nav-links.active { 
+        transform: translateX(0); 
+        border-left: 1px solid white;
+    }
     .nav-links a { font-size: 1.2rem; }
     .hamburger-menu { display: flex; }
     .hamburger-menu.active .bar:nth-child(1) { transform: translateY(10px) rotate(45deg); }
@@ -871,41 +859,76 @@ body.menu-open {
     .demo-container {
         flex-direction: column;
         gap: 40px;
+        width: 100%;
+        box-sizing: border-box;
     }
     .left-panel, .right-panel {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+        width: 100%;
+        box-sizing: border-box;
     }
     .disc-container {
         width: 250px;
         height: 250px;
         order: -1; /* Puts the disc at the top */
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     /* --- Call Agent Box --- */
     .phone-input-group {
         flex-direction: column; /* Stack the inputs vertically */
         align-items: stretch; /* Make items full-width */
+        width: 100%;
+        box-sizing: border-box;
     }
     .custom-select-container {
         width: 100%;
+        box-sizing: border-box;
     }
     .country-code-search-input {
         width: 100%;
+        box-sizing: border-box;
     }
     .country-code-dropdown {
         width: 100%; /* Make dropdown list full width */
         bottom: auto; /* Position it below the input */
         top: 110%;
+        box-sizing: border-box;
+        max-width: calc(100vw - 20px); /* Prevent dropdown from exceeding viewport */
+        left: 0;
+        right: 0;
     }
 
     /* --- Card Grids --- */
     .card-grid > .card {
         flex-basis: 100%;
+        width: 100%;
+        box-sizing: border-box;
     }
     .grid-3-col, .grid-4-col {
         grid-template-columns: 1fr;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* --- Additional fixes for common overflow issues --- */
+    * {
+        box-sizing: border-box;
+    }
+    
+    /* Ensure all flex containers don't overflow */
+    .flex-container {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Fix any images that might cause overflow */
+    img {
+        max-width: 100%;
+        height: auto;
     }
 }
 /* --- Call-to-Action Section Below Disc --- */
@@ -972,4 +995,26 @@ body.menu-open {
 }
 .country-code-select option {
     text-align: left;       /* Align dropdown list items */
+}
+/* Add these new rules to your style.css */
+
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 999; /* Sits right behind the navbar */
+    opacity: 0;
+    pointer-events: none; /* Can't be clicked when hidden */
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* This class will be added by JS to show the overlay */
+.nav-overlay.active {
+    opacity: 1;
+    pointer-events: auto; /* Can be clicked when visible */
 }
