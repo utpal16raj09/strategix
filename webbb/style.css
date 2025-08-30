@@ -286,16 +286,19 @@ p {
 
 .logos-container svg,
 .logos-container img {
-    transition: filter var(--transition-fast), transform var(--transition-fast);
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.971)); /* ✨ default glow */
+    transition: filter var(--transition-fast), transform var(--transition-fast);  
+    filter: 
+    drop-shadow(2px 2px 0px rgb(245, 242, 242))   /* white inner glow */
+    drop-shadow(-1px -1px 2px rgba(247, 244, 244, 1));        /* soft black outer glow */
+
 }
 
 /* Stronger glow on hover */
 .logos-container svg:hover,
 .logos-container img:hover {
     transform: scale(1.1);
-    filter: drop-shadow(0 0 12px rgba(0, 200, 255, 0.9))
-            drop-shadow(0 0 20px rgba(0, 200, 255, 0.6));
+    filter: drop-shadow(0 0 10px rgba(246, 248, 248, 0.9))
+            drop-shadow(0 0 20px rgba(179, 0, 255, 0.6));
 }
 
 
@@ -798,6 +801,13 @@ body.menu-open {
     opacity: 1;
     transform: translateY(0);
 }
+/* Desktop defaults */
+.logo-startup { height: 160px; }   /* large brand */
+.logo-rp      { height: 160px; }
+.logo-slack   { height: 60px; }
+.logo-hubspot { height: 60px; }
+.logo-notion  { height: 60px; }
+
 
 @media (max-width: 1024px) {
     .disc-container {
@@ -831,17 +841,25 @@ body.menu-open {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; /* space between logos */
+    gap: 30px; /* space between logos */
     padding: 20px 0;
   }
 
   .logos-container svg,
-  .logos-container img {
-    width: 60px;   /* ✅ smaller logos */
-    height: auto;
-    max-width: 100%;
-    transition: filter var(--transition-fast), transform var(--transition-fast);
-  }
+  /* Common base styles for all logos */
+.logos-container img,
+.logos-container svg {
+  max-width: 100%;
+  transition: filter var(--transition-fast), transform var(--transition-fast);
+}
+
+/* 🔹 Individual logo sizing */
+.logo-startup { height: 100px; width: auto; }
+.logo-rp      { height: 100px; width: auto; }
+.logo-slack   { height: 40px; width: auto; }
+.logo-hubspot { height: 25px; width: auto; }
+.logo-notion  { height: 40px; width: auto; }
+
 .nav-links {
   position: fixed;
   top: -20px;      /* ADD THIS: Pushes the menu to the absolute top */
